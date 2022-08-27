@@ -1,3 +1,8 @@
+require('dotenv').config();
+const jwt = require('jsonwebtoken');
+
+const secret = process.env.JWT_SECRET;
+
 const loginAuth = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -13,4 +18,18 @@ const loginAuth = async (req, res, next) => {
   }
 };
 
-module.exports = { loginAuth };
+const validateToken = async (req, res, next) => {
+  try {
+    const { authorization: token } = req.headers;
+
+    if (!token) return res.status(401).json({ message: 'Token not found' });
+
+    jwt.verify(token, secret);
+  } catch (e) {
+    return res.status(401).json({ message: 'Expired or invalid token' });
+  }
+
+  next();
+};
+
+module.exports = { loginAuth, validateToken };
