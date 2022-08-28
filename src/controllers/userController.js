@@ -21,9 +21,24 @@ const getAll = async (_req, res) => {
     const allUsers = await userService.getAll();
 
     return res.status(200).json(allUsers);
-  } catch (error) {
+  } catch (e) {
+    console.log(e.message);
     return res.status(500).json({ message: 'an error ocurred' });
   }
 };
 
-module.exports = { create, getAll };
+const getById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { code, message, user } = await userService.getById(id);
+    if (message) return res.status(code).json({ message });
+
+    return res.status(code).json(user);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(500).json({ message: 'an error ocurred' });
+  }
+};
+
+module.exports = { create, getAll, getById };
