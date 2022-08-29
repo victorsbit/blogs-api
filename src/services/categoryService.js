@@ -8,4 +8,6 @@ const create = async (name) => {
   return { code: 201, message: '', category: { id, name } };
 };
 
-module.exports = { create };
+const getAll = async () => Category.findAll();
+
+module.exports = { create, getAll };
