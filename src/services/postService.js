@@ -17,17 +17,13 @@ const verifyFields = ({ title, content, categoryIds }) => {
 };
 
 const verifyCategory = async (categoryIds) => {
-  const itExists = await Promise
+  const result = await Promise
     .all(categoryIds.map((category) => Category.findByPk(category)))
-    .then((values) => {
-      if (values.every((cat) => cat === null)) {
-        return false;
-      }
+    .then((values) => values);
 
-      return true;
-    });
+  if (result.includes(null)) return false;
 
-  return itExists;
+  return true;
 };
 
 const create = async ({ title, content, categoryIds }) => {
@@ -50,7 +46,8 @@ const create = async ({ title, content, categoryIds }) => {
     updated: date,
   });
 
-  [1, 2].forEach(async (categoryId) => PostCategory.create({ categoryId, postId: result.id }));
+  await Promise
+    .all(categoryIds.map((id) => PostCategory.create({ postId: result.id, categoryId: id })));
 
   return { code: 201, message: '', result: { ...result.dataValues } };
 };
