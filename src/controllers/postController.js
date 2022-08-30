@@ -26,4 +26,19 @@ const getAll = async (_req, res) => {
   }
 };
 
-module.exports = { create, getAll };
+const getById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const { code, message, post } = await postService.getById(id);
+
+    if (message) return res.status(code).json({ message });
+
+    return res.status(code).json(post);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(500).json({ message: 'an error ocurred' });
+  }
+};
+
+module.exports = { create, getAll, getById };
