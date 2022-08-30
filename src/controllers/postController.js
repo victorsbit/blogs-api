@@ -8,11 +8,22 @@ const create = async (req, res) => {
 
     if (message) return res.status(code).json({ message });
 
-    return res.status(201).json(result);
+    return res.status(code).json(result);
   } catch (e) {
     console.log(e.message);
     return res.status(500).json({ message: 'an error ocurred' });
   }
 };
 
-module.exports = { create };
+const getAll = async (_req, res) => {
+  try {
+    const posts = await postService.getAll();
+
+    return res.status(200).json(posts);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(500).json({ message: 'an error ocurred' });
+  }
+};
+
+module.exports = { create, getAll };
