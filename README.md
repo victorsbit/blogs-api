@@ -1,7 +1,7 @@
 # Blogs API
 
 ### Contexto
-Essa aplicação Back-end simula o comportamento de Blog. Trata-se de uma API RESTful alimentada por um banco MySQL, cuja conexão é mediada pelo ORM Sequelize.
+Essa aplicação Back-end simula o comportamento de um Blog. Trata-se de uma API RESTful alimentada por um banco MySQL, cuja conexão é mediada pelo ORM Sequelize.
 
 
 
