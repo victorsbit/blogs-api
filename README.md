@@ -1,16 +1,44 @@
-# 🚧 README em construção 🚧
+# Blogs API
 
-<!-- Olá, Tryber!
+## Contexto
+Este projeto trata-se de uma API RESTful capaz de receber requisições HTTP e devolver dados vindos de um banco MySQL mediado por uma ORM.
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+## Requisitos
+#### para rodar localmente:
+> Alterar o arquivo *.env.example* para *.env*
+> Node.js v16.x
 
-É essencial que você preencha esse documento por conta própria, ok?
+#### para rodar via Docker:
+> Docker v20.x | Docker Compose v2.5.x
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+## Técnologias usadas
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+Back-end:
+> Desenvolvido usando: JavaScript ES6 | Node.js | Express.js | Sequelize | MySQL
 
--->
+## Instalando Dependências
+#### Via Docker:
+> docker-compose up -d --build
+> docker exec -it blogs_api bash
+> npm install
+
+#### Localmente:
+> npm install
+
+## Executando aplicação
+
+#### Via Docker:
+> docker exec -it blogs_api bash
+> npm start
+
+#### Localmente:
+> npm start
+
+## Executando os testes
+
+#### Via Docker:
+> docker exec -it blogs_api bash
+> npm test
+
+#### Localmente:
+> npm test
